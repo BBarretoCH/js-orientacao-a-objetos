@@ -1,8 +1,11 @@
 import { Cliente } from "./Cliente.js";
 
 export class ContaCorrente {
+    static numeroDeContas = 0;
     agencia;
     _cliente;
+    _saldo = 0;
+
 
 
     set cliente(novoValor){
@@ -15,10 +18,15 @@ export class ContaCorrente {
         return this._cliente;
     }
 
-    _saldo = 0;
 
     get saldo(){
         return this._saldo;
+    }
+
+    constructor(cliente, agencia){
+        this.agencia = agencia;
+        this.cliente = cliente;
+        ContaCorrente.numeroDeContas++;
     }
 
     sacar(valor) {
